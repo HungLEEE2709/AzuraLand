@@ -1211,7 +1211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 43}
+  m_AnchoredPosition: {x: 0, y: 59}
   m_SizeDelta: {x: 450, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &902897810
@@ -1659,13 +1659,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489468746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deee48a8f034e5846a00b3b19f2d69db, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e0fbbdbf4f5d1941917d04c4dbc8756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   usernameInput: {fileID: 902897808}
   passwordInput: {fileID: 827764963}
   statusText: {fileID: 1278367357}
-  baseUrl: http://localhost:5000/api/auth
+  baseUrl: http://localhost:5000/api/users
   RegisterUI: RegisterUI
 --- !u!1 &1661306108
 GameObject:

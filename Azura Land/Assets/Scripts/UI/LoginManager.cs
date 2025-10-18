@@ -18,7 +18,7 @@ public class LoginManager : MonoBehaviour
     public TMP_InputField usernameInput;
     public TMP_InputField passwordInput;
     public TMP_Text statusText;
-    public string baseUrl = "http://localhost:5000/api/auth";
+    public string baseUrl = "http://localhost:5000/api/users";
 
     // Đặt tên Scene Register của bạn vào đây.
     public string RegisterUI = "RegisterUI"; // *** TÊN SCENE REGISTER ***
@@ -26,7 +26,7 @@ public class LoginManager : MonoBehaviour
     // Gán vào nút REGISTER
     public void OnRegister()
     {
-        
+
         SceneManager.LoadScene(RegisterUI);
     }
 

@@ -587,7 +587,7 @@ MonoBehaviour:
   emailInput: {fileID: 319435286}
   passwordInput: {fileID: 1211343272}
   statusText: {fileID: 147132381}
-  registerUrl: http://localhost:5000/api/auth/register
+  registerUrl: http://localhost:5000/api/users/register
   StartUi: StartUi
 --- !u!114 &370875504
 MonoBehaviour:
