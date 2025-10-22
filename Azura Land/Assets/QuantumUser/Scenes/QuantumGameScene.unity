@@ -170,7 +170,11 @@ MonoBehaviour:
         Value: 3359228484744712068
   UseRandomSeed: 0
   SessionConfig: {fileID: 0}
-  LocalPlayers: []
+  LocalPlayers:
+  - PlayerAvatar:
+      Id:
+        Value: 1311335752277823090
+    PlayerNickname: 
   MaxPlayerCount: 0
   SimulationSpeedMultiplier: 1
   DisplaySaveAndReloadButton: 0
@@ -325,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AssetRef:
     Id:
-      Value: 288402014802676786
+      Value: 269411722061224117
   BakeAllMode: 112
   NavMeshSerializeType: 0
   StaticCollider2DReferences: []
@@ -450,6 +454,14 @@ PrefabInstance:
     - target: {fileID: 1340429413694498, guid: 9e5addbaa78b7264889bf147e593db91, type: 3}
       propertyPath: m_Name
       value: QuantumStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 223635691076894626, guid: 9e5addbaa78b7264889bf147e593db91, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1588343496}
+    - target: {fileID: 223635691076894626, guid: 9e5addbaa78b7264889bf147e593db91, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224646617726674220, guid: 9e5addbaa78b7264889bf147e593db91, type: 3}
       propertyPath: m_Pivot.x

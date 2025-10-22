@@ -52,10 +52,49 @@ namespace Quantum.Prototypes {
   [System.SerializableAttribute()]
   [Quantum.Prototypes.Prototype(typeof(Quantum.Input))]
   public unsafe partial class InputPrototype : StructPrototype {
-    [HideInInspector()]
-    public Int32 _empty_prototype_dummy_field_;
+    public FPVector2 Direction;
     partial void MaterializeUser(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context);
     public void Materialize(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context = default) {
+        result.Direction = this.Direction;
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.PlayerInfo))]
+  public unsafe partial class PlayerInfoPrototype : ComponentPrototype<Quantum.PlayerInfo> {
+    public PlayerRef PlayerRef;
+    public FP Health;
+    public FP MaxHealth;
+    public FP Ki;
+    public FP MaxKi;
+    public FP Damage;
+    public FP Speed;
+    public FP AttackRange;
+    public FP AttackCooldown;
+    public QBoolean IsAttacking;
+    public QBoolean IsBlocking;
+    public QBoolean IsDead;
+    public Int32 FacingDirection;
+    partial void MaterializeUser(Frame frame, ref Quantum.PlayerInfo result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.PlayerInfo component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.PlayerInfo result, in PrototypeMaterializationContext context = default) {
+        result.PlayerRef = this.PlayerRef;
+        result.Health = this.Health;
+        result.MaxHealth = this.MaxHealth;
+        result.Ki = this.Ki;
+        result.MaxKi = this.MaxKi;
+        result.Damage = this.Damage;
+        result.Speed = this.Speed;
+        result.AttackRange = this.AttackRange;
+        result.AttackCooldown = this.AttackCooldown;
+        result.IsAttacking = this.IsAttacking;
+        result.IsBlocking = this.IsBlocking;
+        result.IsDead = this.IsDead;
+        result.FacingDirection = this.FacingDirection;
         MaterializeUser(frame, ref result, in context);
     }
   }

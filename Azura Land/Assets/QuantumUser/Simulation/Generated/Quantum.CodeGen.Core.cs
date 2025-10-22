@@ -511,13 +511,14 @@ namespace Quantum {
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct Input {
-    public const Int32 SIZE = 4;
-    public const Int32 ALIGNMENT = 4;
+    public const Int32 SIZE = 16;
+    public const Int32 ALIGNMENT = 8;
     [FieldOffset(0)]
-    private fixed Byte _alignment_padding_[4];
+    public FPVector2 Direction;
     public override readonly Int32 GetHashCode() {
       unchecked { 
         var hash = 19249;
+        hash = hash * 31 + Direction.GetHashCode();
         return hash;
       }
     }
@@ -536,11 +537,12 @@ namespace Quantum {
     }
     static partial void SerializeCodeGen(void* ptr, FrameSerializer serializer) {
         var p = (Input*)ptr;
+        FPVector2.Serialize(&p->Direction, serializer);
     }
   }
   [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct _globals_ {
-    public const Int32 SIZE = 640;
+    public const Int32 SIZE = 712;
     public const Int32 ALIGNMENT = 8;
     [FieldOffset(0)]
     public AssetRef<Map> Map;
@@ -562,14 +564,14 @@ namespace Quantum {
     public PhysicsSceneSettings PhysicsSettings;
     [FieldOffset(600)]
     public Int32 PlayerConnectedCount;
-    [FieldOffset(604)]
+    [FieldOffset(608)]
     [FramePrinter.FixedArrayAttribute(typeof(Input), 6)]
-    private fixed Byte _input_[24];
-    [FieldOffset(632)]
+    private fixed Byte _input_[96];
+    [FieldOffset(704)]
     public BitSet6 PlayerLastConnectionState;
     public readonly FixedArray<Input> input {
       get {
-        fixed (byte* p = _input_) { return new FixedArray<Input>(p, 4, 6); }
+        fixed (byte* p = _input_) { return new FixedArray<Input>(p, 16, 6); }
       }
     }
     public override readonly Int32 GetHashCode() {
@@ -604,6 +606,72 @@ namespace Quantum {
         serializer.Stream.Serialize(&p->PlayerConnectedCount);
         FixedArray.Serialize(p->input, serializer, Statics.SerializeInput);
         Quantum.BitSet6.Serialize(&p->PlayerLastConnectionState, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct PlayerInfo : Quantum.IComponent {
+    public const Int32 SIZE = 88;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(4)]
+    public PlayerRef PlayerRef;
+    [FieldOffset(48)]
+    public FP Health;
+    [FieldOffset(64)]
+    public FP MaxHealth;
+    [FieldOffset(56)]
+    public FP Ki;
+    [FieldOffset(72)]
+    public FP MaxKi;
+    [FieldOffset(40)]
+    public FP Damage;
+    [FieldOffset(80)]
+    public FP Speed;
+    [FieldOffset(32)]
+    public FP AttackRange;
+    [FieldOffset(24)]
+    public FP AttackCooldown;
+    [FieldOffset(8)]
+    public QBoolean IsAttacking;
+    [FieldOffset(12)]
+    public QBoolean IsBlocking;
+    [FieldOffset(16)]
+    public QBoolean IsDead;
+    [FieldOffset(0)]
+    public Int32 FacingDirection;
+    public override readonly Int32 GetHashCode() {
+      unchecked { 
+        var hash = 13049;
+        hash = hash * 31 + PlayerRef.GetHashCode();
+        hash = hash * 31 + Health.GetHashCode();
+        hash = hash * 31 + MaxHealth.GetHashCode();
+        hash = hash * 31 + Ki.GetHashCode();
+        hash = hash * 31 + MaxKi.GetHashCode();
+        hash = hash * 31 + Damage.GetHashCode();
+        hash = hash * 31 + Speed.GetHashCode();
+        hash = hash * 31 + AttackRange.GetHashCode();
+        hash = hash * 31 + AttackCooldown.GetHashCode();
+        hash = hash * 31 + IsAttacking.GetHashCode();
+        hash = hash * 31 + IsBlocking.GetHashCode();
+        hash = hash * 31 + IsDead.GetHashCode();
+        hash = hash * 31 + FacingDirection.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (PlayerInfo*)ptr;
+        serializer.Stream.Serialize(&p->FacingDirection);
+        PlayerRef.Serialize(&p->PlayerRef, serializer);
+        QBoolean.Serialize(&p->IsAttacking, serializer);
+        QBoolean.Serialize(&p->IsBlocking, serializer);
+        QBoolean.Serialize(&p->IsDead, serializer);
+        FP.Serialize(&p->AttackCooldown, serializer);
+        FP.Serialize(&p->AttackRange, serializer);
+        FP.Serialize(&p->Damage, serializer);
+        FP.Serialize(&p->Health, serializer);
+        FP.Serialize(&p->Ki, serializer);
+        FP.Serialize(&p->MaxHealth, serializer);
+        FP.Serialize(&p->MaxKi, serializer);
+        FP.Serialize(&p->Speed, serializer);
     }
   }
   public static unsafe partial class Constants {
@@ -652,6 +720,8 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<PhysicsJoints2D>();
       BuildSignalsArrayOnComponentAdded<PhysicsJoints3D>();
       BuildSignalsArrayOnComponentRemoved<PhysicsJoints3D>();
+      BuildSignalsArrayOnComponentAdded<Quantum.PlayerInfo>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.PlayerInfo>();
       BuildSignalsArrayOnComponentAdded<Transform2D>();
       BuildSignalsArrayOnComponentRemoved<Transform2D>();
       BuildSignalsArrayOnComponentAdded<Transform2DVertical>();
@@ -664,6 +734,7 @@ namespace Quantum {
     partial void SetPlayerInputCodeGen(PlayerRef player, Input input) {
       if ((int)player >= (int)_globals->input.Length) { throw new System.ArgumentOutOfRangeException("player"); }
       var i = _globals->input.GetPointer(player);
+      i->Direction = input.Direction;
     }
     public Input* GetPlayerInput(PlayerRef player) {
       if ((int)player >= (int)_globals->input.Length) { throw new System.ArgumentOutOfRangeException("player"); }
@@ -752,6 +823,7 @@ namespace Quantum {
       typeRegistry.Register(typeof(PhysicsJoints3D), PhysicsJoints3D.SIZE);
       typeRegistry.Register(typeof(PhysicsQueryRef), PhysicsQueryRef.SIZE);
       typeRegistry.Register(typeof(PhysicsSceneSettings), PhysicsSceneSettings.SIZE);
+      typeRegistry.Register(typeof(Quantum.PlayerInfo), Quantum.PlayerInfo.SIZE);
       typeRegistry.Register(typeof(PlayerRef), PlayerRef.SIZE);
       typeRegistry.Register(typeof(Ptr), Ptr.SIZE);
       typeRegistry.Register(typeof(QBoolean), QBoolean.SIZE);
@@ -769,8 +841,9 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 0)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 1)
         .AddBuiltInComponents()
+        .Add<Quantum.PlayerInfo>(Quantum.PlayerInfo.Serialize, null, null, ComponentFlags.None)
         .Finish();
     }
     [Preserve()]

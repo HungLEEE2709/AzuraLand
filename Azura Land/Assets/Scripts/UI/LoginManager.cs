@@ -2,9 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
-using UnityEngine.SceneManagement; // *** THÊM THƯ VIỆN NÀY ***
-
-// --- Dữ liệu gửi đi (Payload) ---
+using UnityEngine.SceneManagement; 
 [System.Serializable]
 public class AuthPayload
 {
@@ -14,27 +12,21 @@ public class AuthPayload
 
 public class LoginManager : MonoBehaviour
 {
-    // ... (các biến khác giữ nguyên)
     public TMP_InputField usernameInput;
     public TMP_InputField passwordInput;
     public TMP_Text statusText;
     public string baseUrl = "http://localhost:5000/api/users";
 
-    // Đặt tên Scene Register của bạn vào đây.
-    public string RegisterUI = "RegisterUI"; // *** TÊN SCENE REGISTER ***
-
-    // Gán vào nút REGISTER
+    public string RegisterUI = "RegisterUI";
     public void OnRegister()
     {
 
         SceneManager.LoadScene(RegisterUI);
     }
 
-    // Gán vào nút LOGIN
     public void OnLogin() { StartCoroutine(LoginCoroutine()); }
     IEnumerator LoginCoroutine()
     {
-        // ... (logic đăng nhập giữ nguyên)
         AuthPayload data = new AuthPayload
         {
             username = usernameInput.text,
@@ -59,7 +51,6 @@ public class LoginManager : MonoBehaviour
                 {
                     PlayerPrefs.SetString("jwt_token", token);
                     statusText.text = "Đăng nhập thành công! ✅";
-                    // **TODO:** Thêm logic chuyển cảnh (Scene) tại đây
                 }
                 else statusText.text = "Không nhận được token từ server.";
             }

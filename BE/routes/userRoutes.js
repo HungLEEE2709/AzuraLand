@@ -1,13 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
-const bcrypt = require("bcryptjs"); // ✅ dùng để mã hoá mật khẩu
-const jwt = require("jsonwebtoken"); // ✅ tạo token
+const bcrypt = require("bcryptjs"); 
+const jwt = require("jsonwebtoken"); 
 const PORT = process.env.PORT || 5000;
 
-const SECRET_KEY = "azura_secret_key"; // Bạn nên lưu trong .env
+const SECRET_KEY = "azura_secret_key"; 
 
-// 📥 Đăng ký tài khoản
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -31,7 +30,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// 🔑 Đăng nhập
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -42,7 +40,6 @@ router.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: "Sai mật khẩu" });
 
-    // 🔐 Tạo token để Unity hoặc client dùng xác thực sau này
     const token = jwt.sign({ id: user._id, username: user.username }, SECRET_KEY, {
       expiresIn: "7d",
     });

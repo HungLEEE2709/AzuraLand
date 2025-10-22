@@ -1,0 +1,19 @@
+input
+{
+FPVector2 Direction;
+}
+component PlayerInfo{
+  player_ref PlayerRef;
+  FP Health;
+  FP MaxHealth;
+  FP Ki;
+  FP MaxKi;
+  FP Damage;
+  FP Speed;
+  FP AttackRange;
+  FP AttackCooldown;
+  bool IsAttacking;
+  bool IsBlocking;
+  bool IsDead;
+  int FacingDirection;
+}
