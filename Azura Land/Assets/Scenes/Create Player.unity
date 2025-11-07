@@ -919,6 +919,18 @@ MonoBehaviour:
           m_StringArgument: Namec
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1090220665}
+        m_TargetAssemblyTypeName: GameScripts.CharacterManager, Assembly-CSharp
+        m_MethodName: ShowCharactersForPlanet
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Namec
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &557633471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1640,7 +1652,8 @@ MonoBehaviour:
   btnChar1: {fileID: 526005037}
   btnChar2: {fileID: 1560913090}
   btnDoiToc: {fileID: 0}
-  imgCharacter: {fileID: 0}
+  imgBody: {fileID: 0}
+  imgHair: {fileID: 0}
   gohanBody: {fileID: 0}
   yamchaBody: {fileID: 0}
   ocTieuBody: {fileID: 0}
@@ -1735,6 +1748,18 @@ MonoBehaviour:
       - m_Target: {fileID: 357223006}
         m_TargetAssemblyTypeName: BGManager, Assembly-CSharp
         m_MethodName: ShowPlanet
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Xayda
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1090220665}
+        m_TargetAssemblyTypeName: GameScripts.CharacterManager, Assembly-CSharp
+        m_MethodName: ShowCharactersForPlanet
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2140,6 +2165,18 @@ MonoBehaviour:
       - m_Target: {fileID: 357223006}
         m_TargetAssemblyTypeName: BGManager, Assembly-CSharp
         m_MethodName: ShowPlanet
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TraiDat
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1090220665}
+        m_TargetAssemblyTypeName: GameScripts.CharacterManager, Assembly-CSharp
+        m_MethodName: ShowCharactersForPlanet
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

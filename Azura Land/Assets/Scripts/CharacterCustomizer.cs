@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro; // 👈 thêm dòng này
 
 namespace GameScripts
 {
@@ -10,69 +11,92 @@ namespace GameScripts
         public Button btnChar1;
         public Button btnChar2;
         public Button btnDoiToc;
-        public Image imgCharacter;
 
-        [Header("Sprites")]
+        [Header("Ảnh nhân vật")]
+        public Image imgBody;
+        public Image imgHair;
+
+        [Header("Sprites thân - Trái Đất")]
         public Sprite gohanBody;
         public Sprite yamchaBody;
+
+        [Header("Sprites thân - Namec")]
         public Sprite ocTieuBody;
         public Sprite kamiBody;
+
+        [Header("Sprites thân - Xayda")]
         public Sprite radicBody;
         public Sprite kakalotBody;
 
-        [Header("Tóc")]
+        [Header("Sprites tóc")]
         public Sprite hair1;
         public Sprite hair2;
 
-        private Sprite currentHair;
         private bool usingHair1 = true;
         private string currentPlanet = "";
+        private Sprite currentBody;
 
         void Start()
         {
-            panelCharacter.SetActive(true);
+            if (btnDoiToc != null)
+                btnDoiToc.onClick.AddListener(DoiToc);
         }
 
         public void ShowCharactersForPlanet(string planet)
         {
-            panelCharacter.SetActive(true);
             currentPlanet = planet;
+            panelCharacter.SetActive(true);
 
             btnChar1.onClick.RemoveAllListeners();
             btnChar2.onClick.RemoveAllListeners();
 
+            // 👉 Dùng TextMeshProUGUI thay vì Text
+            TextMeshProUGUI txt1 = btnChar1.GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI txt2 = btnChar2.GetComponentInChildren<TextMeshProUGUI>();
+
             switch (planet)
             {
                 case "TraiDat":
-                    btnChar1.onClick.AddListener(() => SelectCharacter(gohanBody));
-                    btnChar2.onClick.AddListener(() => SelectCharacter(yamchaBody));
+                    SetupButton(btnChar1, gohanBody, "Gohan", txt1);
+                    SetupButton(btnChar2, yamchaBody, "Yamcha", txt2);
                     break;
+
                 case "Namec":
-                    btnChar1.onClick.AddListener(() => SelectCharacter(ocTieuBody));
-                    btnChar2.onClick.AddListener(() => SelectCharacter(kamiBody));
+                    SetupButton(btnChar1, ocTieuBody, "Ốc tiêu", txt1);
+                    SetupButton(btnChar2, kamiBody, "Kami", txt2);
                     break;
+
                 case "Xayda":
-                    btnChar1.onClick.AddListener(() => SelectCharacter(radicBody));
-                    btnChar2.onClick.AddListener(() => SelectCharacter(kakalotBody));
+                    SetupButton(btnChar1, radicBody, "Radic", txt1);
+                    SetupButton(btnChar2, kakalotBody, "Kakalot", txt2);
                     break;
             }
         }
 
+        private void SetupButton(Button btn, Sprite body, string name, TextMeshProUGUI txt)
+        {
+            if (txt != null)
+                txt.text = name; // đổi chữ trên nút
+
+            btn.onClick.AddListener(() => SelectCharacter(body));
+        }
+
         public void SelectCharacter(Sprite body)
         {
-            imgCharacter.sprite = body;
-            imgCharacter.color = Color.white;
-            currentHair = hair1;
+            currentBody = body;
+            imgBody.sprite = currentBody;
+            imgBody.color = Color.white;
+
             usingHair1 = true;
+            imgHair.sprite = hair1;
+            imgHair.color = Color.white;
         }
 
         public void DoiToc()
         {
-            if (imgCharacter.sprite == null) return;
-
+            if (imgBody.sprite == null) return;
             usingHair1 = !usingHair1;
-            currentHair = usingHair1 ? hair1 : hair2;
-            imgCharacter.sprite = currentHair;
+            imgHair.sprite = usingHair1 ? hair1 : hair2;
         }
     }
 }
