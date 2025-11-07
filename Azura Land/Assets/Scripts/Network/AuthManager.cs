@@ -47,8 +47,8 @@ public class AuthManager : MonoBehaviour
             if (response.IsSuccessStatusCode)
             {
                 statusText.text = "✅ Thành công!";
-                PlayerPrefs.SetString("authToken", result); // lưu JWT
-                SceneManager.LoadScene("StartUI"); // vào màn lobby
+                PlayerPrefs.SetString("authToken", result); 
+                SceneManager.LoadScene("StartUI"); 
             }
             else
             {
