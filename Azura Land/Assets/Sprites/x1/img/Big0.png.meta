@@ -156,9 +156,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 66
-        y: 243
+        y: 244
         width: 17
-        height: 12
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1733,7 +1733,7 @@ TextureImporter:
         x: 159
         y: 150
         width: 14
-        height: 12
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2405,7 +2405,7 @@ TextureImporter:
         x: 211
         y: 170
         width: 14
-        height: 11
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2465,9 +2465,9 @@ TextureImporter:
       name: Big0_112
       rect:
         serializedVersion: 2
-        x: 153
+        x: 154
         y: 176
-        width: 23
+        width: 22
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2824,7 +2824,7 @@ TextureImporter:
         serializedVersion: 2
         x: 144
         y: 161
-        width: 18
+        width: 17
         height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
