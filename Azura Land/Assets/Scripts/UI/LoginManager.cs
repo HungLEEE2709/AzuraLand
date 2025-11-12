@@ -17,7 +17,13 @@ public class LoginManager : MonoBehaviour
     public TMP_Text statusText;
     public string baseUrl = "http://localhost:5000/api/users";
 
+    public string StartUI = "StartUI";
     public string RegisterUI = "RegisterUI";
+
+    void GoToStartUI()
+    {
+        SceneManager.LoadScene(StartUI);
+    }
     public void OnRegister()
     {
 
@@ -51,6 +57,7 @@ public class LoginManager : MonoBehaviour
                 {
                     PlayerPrefs.SetString("jwt_token", token);
                     statusText.text = "Đăng nhập thành công! ✅";
+                    GoToStartUI();
                 }
                 else statusText.text = "Không nhận được token từ server.";
             }

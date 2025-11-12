@@ -53,9 +53,11 @@ namespace Quantum.Prototypes {
   [Quantum.Prototypes.Prototype(typeof(Quantum.Input))]
   public unsafe partial class InputPrototype : StructPrototype {
     public FPVector2 Direction;
+    public QBoolean Jump;
     partial void MaterializeUser(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context);
     public void Materialize(Frame frame, ref Quantum.Input result, in PrototypeMaterializationContext context = default) {
         result.Direction = this.Direction;
+        result.Jump = this.Jump;
         MaterializeUser(frame, ref result, in context);
     }
   }
@@ -64,16 +66,11 @@ namespace Quantum.Prototypes {
   public unsafe partial class PlayerInfoPrototype : ComponentPrototype<Quantum.PlayerInfo> {
     public PlayerRef PlayerRef;
     public FP Health;
-    public FP MaxHealth;
     public FP Ki;
-    public FP MaxKi;
     public FP Damage;
     public FP Speed;
     public FP AttackRange;
     public FP AttackCooldown;
-    public QBoolean IsAttacking;
-    public QBoolean IsBlocking;
-    public QBoolean IsDead;
     public Int32 FacingDirection;
     partial void MaterializeUser(Frame frame, ref Quantum.PlayerInfo result, in PrototypeMaterializationContext context);
     public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
@@ -84,17 +81,29 @@ namespace Quantum.Prototypes {
     public void Materialize(Frame frame, ref Quantum.PlayerInfo result, in PrototypeMaterializationContext context = default) {
         result.PlayerRef = this.PlayerRef;
         result.Health = this.Health;
-        result.MaxHealth = this.MaxHealth;
         result.Ki = this.Ki;
-        result.MaxKi = this.MaxKi;
         result.Damage = this.Damage;
         result.Speed = this.Speed;
         result.AttackRange = this.AttackRange;
         result.AttackCooldown = this.AttackCooldown;
-        result.IsAttacking = this.IsAttacking;
-        result.IsBlocking = this.IsBlocking;
-        result.IsDead = this.IsDead;
         result.FacingDirection = this.FacingDirection;
+        MaterializeUser(frame, ref result, in context);
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.Prototype(typeof(Quantum.PlayerState))]
+  public unsafe partial class PlayerStatePrototype : ComponentPrototype<Quantum.PlayerState> {
+    public QBoolean IsGrounded;
+    public QBoolean CanFly;
+    partial void MaterializeUser(Frame frame, ref Quantum.PlayerState result, in PrototypeMaterializationContext context);
+    public override Boolean AddToEntity(FrameBase f, EntityRef entity, in PrototypeMaterializationContext context) {
+        Quantum.PlayerState component = default;
+        Materialize((Frame)f, ref component, in context);
+        return f.Set(entity, component) == SetResult.ComponentAdded;
+    }
+    public void Materialize(Frame frame, ref Quantum.PlayerState result, in PrototypeMaterializationContext context = default) {
+        result.IsGrounded = this.IsGrounded;
+        result.CanFly = this.CanFly;
         MaterializeUser(frame, ref result, in context);
     }
   }

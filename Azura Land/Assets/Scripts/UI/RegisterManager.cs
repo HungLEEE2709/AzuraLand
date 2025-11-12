@@ -26,7 +26,6 @@ public class RegisterManager : MonoBehaviour
     // Tên Scene Login để quay lại
     public string StartUi = "StartUi"; 
 
-    // Gán vào nút "Xác Nhận"
     public void OnConfirmRegister()
     {
         StartCoroutine(RegisterCoroutine());
