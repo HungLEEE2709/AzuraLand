@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/QuantumUser/Scenes/QuantumSimpleConnectionScene.unity
+    guid: b0bdaa0b9e9ebf9428994336a0bbcf32
   - enabled: 1
     path: Assets/QuantumUser/Scenes/NewQuantumGameScene.unity
     guid: df420e59c602d71428ba6711b47f501a

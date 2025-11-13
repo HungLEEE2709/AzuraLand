@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Quan trọng: Cần import để chuyển Scene
 using System.Collections;
 
 namespace GameScripts
@@ -10,17 +11,26 @@ namespace GameScripts
         public Image bgNamec;
         public Image bgXayda;
 
-        public CharacterManager characterManager; // kéo CharacterManager vào Inspector
+        public CharacterManager characterManager; 
+        public InputField characterNameInput; 
+        public GameObject characterCreationPanel; 
 
         private Image currentBG;
 
         void Start()
         {
+            // Thiết lập trạng thái ban đầu
             currentBG = bgTraiDat;
             SetAlpha(bgTraiDat, 1);
             SetAlpha(bgNamec, 0);
             SetAlpha(bgXayda, 0);
+
+            // Đảm bảo Panel tạo nhân vật đang đóng khi Start
+            if (characterCreationPanel != null)
+                characterCreationPanel.SetActive(false);
         }
+
+        // --- BACKGROUND LOGIC ---
 
         public void ShowPlanet(string planet)
         {
@@ -66,6 +76,44 @@ namespace GameScripts
             Color c = img.color;
             c.a = Mathf.Clamp01(alpha);
             img.color = c;
+        }
+
+        public void OnCloseCharacterCreation()
+        {
+            Debug.Log("Đóng giao diện tạo nhân vật.");
+            SceneManager.LoadScene("StartUI");
+        }
+
+        public void OnCreateCharacter()
+        {
+            if (characterNameInput == null)
+            {
+                Debug.LogError("Chưa gán InputField cho characterNameInput.");
+                return;
+            }
+
+            string playerName = characterNameInput.text.Trim();
+
+            // 1. Kiểm tra điều kiện tên nhân vật
+            if (string.IsNullOrEmpty(playerName))
+            {
+                Debug.LogWarning("Vui lòng nhập tên nhân vật!");
+                // (Bạn nên hiển thị một thông báo UI cho người chơi ở đây)
+                return;
+            }
+
+            if (playerName.Length < 5)
+            {
+                Debug.LogWarning("Tên nhân vật phải có ít nhất 5 ký tự.");
+                return;
+            }
+
+            Debug.Log($"Nhân vật {playerName} đã được tạo thành công!");
+
+            // (LƯU Ý: Nếu bạn cần lưu trữ dữ liệu nhân vật, hãy làm ở đây)
+            // Ví dụ: PlayerPrefs.SetString("PlayerName", playerName);
+
+            SceneManager.LoadScene("QuantumGameScene");
         }
     }
 }

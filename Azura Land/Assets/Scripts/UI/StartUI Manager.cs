@@ -22,19 +22,23 @@ public class StartUIManager : MonoBehaviour
 
     private void OnContinueClick()
     {
-        Debug.Log("Loading Quantum Game Scene...");
-        SceneManager.LoadScene(quantumGameScene);
+        if (PlayerPrefs.HasKey("PlayerID"))
+        {
+            SceneManager.LoadScene(quantumGameScene);
+        }
+        else
+        {
+            SceneManager.LoadScene(createPlayerScene);
+        }
     }
 
     private void OnNewGameClick()
     {
-        Debug.Log("Loading Create Player Scene...");
         SceneManager.LoadScene(createPlayerScene);
     }
 
     private void OnChangeAccountClick()
     {
-        Debug.Log("Loading Login UI...");
         SceneManager.LoadScene(loginUIScene);
     }
 }
