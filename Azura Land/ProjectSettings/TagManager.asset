@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - nhanvat
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -41,6 +41,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: Layer 1
     uniqueID: 2425651459
     locked: 0
@@ -49,4 +50,17 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+=======
+  - name: Background
+    uniqueID: 688899317
+>>>>>>> dc937091bc62da7e36f91f9e0f5acb2f2f9440ba
+    locked: 0
+  - name: backgroundd2
+    uniqueID: 1513292981
+    locked: 0
+  - name: dat
+    uniqueID: 2883335817
+    locked: 0
+  - name: UI
+    uniqueID: 2730013863
     locked: 0
