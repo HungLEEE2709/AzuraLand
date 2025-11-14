@@ -5,15 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/QuantumUser/Scenes/QuantumSimpleConnectionScene.unity
-    guid: b0bdaa0b9e9ebf9428994336a0bbcf32
   - enabled: 1
     path: Assets/Scenes/StartUI.unity
     guid: 1acd49a3370c0ef4baa2c85b95eb86c8
-  - enabled: 1
-    path: Assets/Scenes/Create Player.unity
-    guid: baaa7a16243ba954090c1185ecd21695
   - enabled: 1
     path: Assets/Scenes/LoginUI.unity
     guid: b21f11b267959274aa1cd9ada05d2beb
@@ -21,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/RegisterUI.unity
     guid: 6744b516508294547bce0d8076178731
   - enabled: 1
-    path: Assets/QuantumUser/Scenes/QuantumGameScene.unity
-    guid: fd588817dedf7cb47b28e9cde1ca03cc
+    path: Assets/Scenes/Create Player.unity
+    guid: baaa7a16243ba954090c1185ecd21695
+  - enabled: 0
+    path: Assets/QuantumUser/Scenes/Map1.unity
+    guid: bbb7796cc8fbe6c478fb2a2a6638d11b
   m_configObjects: {}

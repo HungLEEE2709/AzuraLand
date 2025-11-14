@@ -1,5 +1,27 @@
 {
   "dependencies": {
+    "com.photonengine.photonlibs": {
+      "version": "file:../Photon/PhotonLibs",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.photonengine.quantum": {
+      "version": "file:../Photon/Quantum",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.photonengine.realtime": "5.1.0"
+      }
+    },
+    "com.photonengine.realtime": {
+      "version": "file:../Photon/PhotonRealtime",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.photonengine.photonlibs": "5.1.0"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "9.2.0",
       "depth": 1,

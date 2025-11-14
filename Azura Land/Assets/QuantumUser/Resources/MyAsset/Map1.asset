@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1722638350, guid: b156eeaae3f741b40af66649a4748430, type: 3}
+  m_Name: Map1
+  m_EditorClassIdentifier: 
+  Identifier:
+    Path: QuantumUser/Resources/MyAsset/Map1
+    Guid:
+      Value: 416948482231848805
+  UserAsset:
+    Id:
+      Value: 0
+  Scene: QuantumGameScene
+  ScenePath: Assets/QuantumUser/Scenes/QuantumGameScene.unity
+  SceneGuid: fd588817dedf7cb47b28e9cde1ca03cc
+  WorldSize: 256
+  BucketsCount: 16
+  BucketsSubdivisions: 8
+  BucketingAxis: 0
+  SortingAxis: 1
+  SceneMeshCellSize:
+    RawValue: 262144
+  TriangleMeshCellSize: -1
+  StaticColliders3DTrianglesData:
+    Id:
+      Value: 509233785523834414
+  SerializeTrianglesMetadata: 0
+  GridSizeX: 64
+  GridSizeY: 64
+  GridNodeSize: 4
+  NavMeshLinks: []
+  Regions: []
+  StaticColliders2D:
+  - Rotation:
+      RawValue: 0
+    Position:
+      X:
+        RawValue: -1755
+      Y:
+        RawValue: -123
+    Height:
+      RawValue: 0
+    VerticalOffset:
+      RawValue: 0
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    Layer: 0
+    ShapeType: 2
+    CircleRadius:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+    CapsuleSize:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+    EdgeExtent:
+      RawValue: 0
+    PolygonCollider:
+      Vertices:
+      - X:
+          RawValue: 1755
+        Y:
+          RawValue: 33356
+      - X:
+          RawValue: -60573
+        Y:
+          RawValue: 20374
+      - X:
+          RawValue: -42149
+        Y:
+          RawValue: -31361
+      - X:
+          RawValue: 35969
+        Y:
+          RawValue: -32438
+      - X:
+          RawValue: 64083
+        Y:
+          RawValue: 20374
+      Normals:
+      - X:
+          RawValue: -13364
+        Y:
+          RawValue: 64159
+      - X:
+          RawValue: -61739
+        Y:
+          RawValue: -21987
+      - X:
+          RawValue: -904
+        Y:
+          RawValue: -65531
+      - X:
+          RawValue: 57850
+        Y:
+          RawValue: -30797
+      - X:
+          RawValue: 13363
+        Y:
+          RawValue: 64159
+    StaticData:
+      Name: Grid
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 0
+      MutableMode: 0
+  - Rotation:
+      RawValue: 0
+    Position:
+      X:
+        RawValue: 1310720
+      Y:
+        RawValue: 1310720
+    Height:
+      RawValue: 0
+    VerticalOffset:
+      RawValue: 0
+    PhysicsMaterial:
+      Id:
+        Value: 0
+    Layer: 0
+    ShapeType: 4
+    CircleRadius:
+      RawValue: 0
+    BoxExtents:
+      X:
+        RawValue: 655360
+      Y:
+        RawValue: 983040
+    CapsuleSize:
+      X:
+        RawValue: 0
+      Y:
+        RawValue: 0
+    EdgeExtent:
+      RawValue: 0
+    PolygonCollider:
+      Vertices: []
+      Normals: []
+    StaticData:
+      Name: Tilemap
+      Tag: Untagged
+      Layer: 0
+      Asset:
+        Id:
+          Value: 0
+      IsTrigger: 0
+      ColliderIndex: 1
+      MutableMode: 0
+  StaticColliders3D: []
+  MapEntities:
+  - Components:
+    - rid: 6215053784549163008
+    - rid: 6215053784549163009
+    - rid: 6215053784549163010
+  SerializedTriangleDataUncompressedSize: 8
+  references:
+    version: 2
+    RefIds:
+    - rid: 6215053784549163008
+      type: {class: Transform2DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
+      data:
+        Position:
+          X:
+            RawValue: 66571
+          Y:
+            RawValue: 0
+        Rotation:
+          RawValue: 0
+    - rid: 6215053784549163009
+      type: {class: PhysicsCollider2DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
+      data:
+        ShapeConfig:
+          ShapeType: 4
+          PolygonCollider:
+            Id:
+              Value: 0
+          CircleRadius:
+            RawValue: 588335
+          CapsuleSize:
+            X:
+              RawValue: 1176670
+            Y:
+              RawValue: 131072
+          EdgeExtent:
+            RawValue: 588335
+          BoxExtents:
+            X:
+              RawValue: 588335
+            Y:
+              RawValue: 32768
+          PositionOffset:
+            X:
+              RawValue: 0
+            Y:
+              RawValue: 0
+          RotationOffset:
+            RawValue: 0
+          UserTag: 0
+          IsPersistent: 1
+          CompoundShapes: []
+        Layer: 0
+        IsTrigger: 0
+        PhysicsMaterial:
+          Id:
+            Value: 0
+    - rid: 6215053784549163010
+      type: {class: PhysicsCallbacks2DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
+      data:
+        CallbackFlags:
+          Value: 0
